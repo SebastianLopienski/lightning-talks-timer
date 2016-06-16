@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>ITLT timer control panel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="timer-client.js"></script>
+
+	<style>
+		.ui-btn {
+			margin-top: 10px;
+			margin-bottom: 30px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			font-size: 120%;
+			border-color: #dddddd !important;
+		}
+
+		.blue {
+			background-color: #2b84d2 !important;
+		}
+
+		.green {
+			background-color: #199172 !important;
+		}
+
+		.red {
+			background-color: #b22621 !important;
+		}
+
+		.smaller {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			font-size: 100%;
+		}
+
+		.full-width-slider input {
+			display: none;
+		}
+		
+		.full-width-slider .ui-slider-track {
+			margin-left: 15px;
+		}
+
+		#page {
+			color: #ffffff; 
+			font-family: "Lucida Console", Monaco, monospace;
+			text-align: center;
+		}
+		#msgSmall {
+			font-size: 10px;
+		}
+		#msgBig {
+			font-size: 20px;
+		}
+		#digitsBig {
+			font-size: 25px;
+		}
+		#description {
+			font-size: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+<div data-role="page">	
+	<div role="main" class="ui-content">
+
+		<button id="talk"      class="ui-btn ui-btn-b blue">Talk</button>
+
+		<button id="questions" class="ui-btn ui-btn-b green">Questions</button>
+
+		<button id="stop"      class="ui-btn ui-btn-b red">Stop</button>
+
+		<form class="full-width-slider">
+			<input type="range" name="seconds" id="seconds" data-mini="true" min="0" max="300" step="10" value="60">
+		</form>
+
+		<button id="set" class="ui-btn smaller"></button>
+
+		<button id="add10" class="ui-btn smaller">Add 10s</button>
+
+		<div id="page">
+	    	<div id="msgSmall"></div>
+	    	<div id="msgBig"></div>
+	    	<div id="digitsBig"></div>
+	    	<div id="description"></div>
+		</div>
+
+
+	</div><!-- /content -->
+</div><!-- /page -->
+
+
+<script lang="text/javascript">
+
+var token = "";
+
+//debug = true;
+
+function formatTime()
+{
+	var s = $("#seconds").val();
+	$('#set').html('Set ' + 
+		Math.floor(s / 60) + ":" + 
+		(s % 60 < 10?"0":"") + 
+		(s % 60));
+}
+
+$( document ).ready(function() {
+
+	if (window.location.hash) {
+		token = window.location.hash.substring(1);
+	} else {
+		alert("No token?");
+	}
+
+	formatTime();
+
+	$("#seconds").change(function(){
+		formatTime();
+	});
+
+	$(".ui-btn").on("tap", function(event){
+		$.get("set?token=" + token + "&" + event.target.id +
+			(event.target.id == "set"?"="+$("#seconds").val():"") +
+			"&" + Date.now());
+	});
+
+});
+</script>
+
+</body>
+</html>
