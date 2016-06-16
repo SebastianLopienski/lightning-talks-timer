@@ -11,7 +11,7 @@ http   = require('http');
 var timer = {ts: 0}, seconds;
 var token;
 
-if (process.argv.length < 3) {
+if (process.argv.length < 3 || process.argv[2] == "") {
 	token = crypto.randomBytes(20).toString('hex');
 } else {
 	token = process.argv[2];
