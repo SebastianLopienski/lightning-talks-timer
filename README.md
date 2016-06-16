@@ -2,7 +2,13 @@
 
 Author: Sebastian.Lopienski@cern.ch
 
-### How to start
+### How does it work?
+
+* Run the timer server (see below) on any machine with nodejs (Linux, Mac)
+* Open the timer in a browser (can be the same machine as the server, or another, e.g. on a tablet)
+* Open the admin panel in another browser (e.g. on your smartphone)
+
+### How to start?
 
 To run the timer (on any machine with nodejs):
 
