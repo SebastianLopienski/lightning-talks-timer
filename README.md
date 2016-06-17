@@ -26,3 +26,4 @@ Arguments (all optional)
 
 - [ ] add an automatic reload of the timer panel (every 30 seconds?)
 - [ ] add a visual notification when updates from the server fail
+- [ ] develop a server-less version, controlled with a remote keyboard (or a presentation remote control)
