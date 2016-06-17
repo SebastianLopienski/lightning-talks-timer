@@ -4,9 +4,9 @@ Author: Sebastian.Lopienski@cern.ch
 
 ### How does it work?
 
-* Run the timer server (see below) on any machine with nodejs (Linux, Mac)
-* Open the timer in a browser (can be the same machine as the server, or another, e.g. on a tablet)
-* Open the admin panel in another browser (e.g. on your smartphone)
+* Run the *timer server* (see below) on any machine with nodejs (Linux, Mac)
+* Open the *timer display* in a browser (can be the same machine as the server, or another, e.g. on a tablet)
+* Open the *control panel* in another browser (e.g. on your smartphone)
 
 ### How to start?
 
@@ -20,7 +20,8 @@ Arguments (all optional)
 * `SECRET-TOKEN` - if not provided or empty, it will be randomly generated for you
 * `TALK-TIME` - duration of a talk, in minutes (default: 5)
 * `QA-TIME` - duration of Q&A, in minutes (default: 2)
-
+ 
+Once started, the *timer server* will output the URLs for the *timer display*, and the *control panel*.
 
 ### TODO
 
